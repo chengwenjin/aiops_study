@@ -81,8 +81,20 @@ resource "tencentcloud_security_group_rule" "ssh" {
   }
   
   provisioner "remote-exec" {
-    inline = [
-      "yum install -y docker-ce",
+    # inline = [
+    #   "yum install -y docker-ce",
+    # ]
+
+    inline =[
+       "yum clean all",
+       "rm -rf /var/cache/dnf",
+       "yum makecache",
+       "yum install -y yum-utils device-mapper-persistent-data lvm2",
+       "yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo",
+       "yum update -y",
+       "yum install -y docker-ce docker-ce-cli containerd.io",
+       "systemctl start docker",
+       "systemctl enable docker"
     ]
   }
 
