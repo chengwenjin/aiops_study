@@ -1,0 +1,30 @@
+apiVersion: redis.tencentcloud.crossplane.io/v1alpha1
+kind: Instance
+metadata:
+  name: my-redis-instance
+  namespace: crossplane-system
+spec:
+  forProvider:
+    # region: ap-guangzhou
+    # zone: ap-guangzhou-1
+    availabilityZone: ap-guangzhou-1
+    memSize: 256
+    passwordSecretRef:
+      key: password
+      name: example-redis-creds
+      namespace: crossplane-system
+    chargeType: POSTPAID
+  # providerConfigRef:
+  #   name: default
+  #   namespace: crossplane-system
+  # publishConnectionDetailsTo:
+  #   configRef:
+  #     name: my-redis-config
+  # writeConnectionSecretToRef:
+  #   name: my-redis-secret
+  #   namespace: crossplane-system
+  # conditions:
+  # - lastTransitionTime: ""
+  #   reason: ""
+  #   status: ""
+  #   type: ""

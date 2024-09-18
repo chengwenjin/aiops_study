@@ -11,6 +11,6 @@ spec:
     instanceType: "SA5.MEDIUM4"
     systemDiskType: "CLOUD_BSSD"
     vpcIdRef:
-      name: "example-cvm-vpc"
+      name: "example-cvm-vpc-test"
     subnetIdRef:
-      name: "example-cvm-subnet"
+      name: "example-cvm-subnet-test4"
